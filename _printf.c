@@ -10,15 +10,15 @@ int _printf(const char *format, ...)
 	const char *string;
 	int cont = 0;
 	va_list arg;
-	
+
 	if (!format)
 		return (-1);
-	
+
 	va_start(arg, format);
 	string = format;
-	
+
 	cont = loop_format(arg, string);
-	
+
 	va_end(arg);
 	return (cont);
 }
@@ -36,7 +36,7 @@ int loop_format(va_list arg, const char *string)
 	while (i < _strlen((char *)string) && *string != '\0')
 	{
 		char aux = string[i];
-		
+
 		if (aux == '%')
 		{
 			i++, flag++;
@@ -105,6 +105,7 @@ int check_percent(int *flag, char aux)
 int call_function_manager(char aux, va_list arg)
 {
 	int cont = 0;
+
 	cont = function_manager(aux, arg);
 	return (cont);
 }
